@@ -14,6 +14,7 @@
         public string Content { get; set; }
 
         [Required]
+        [Display(Name = "Category")]
         public int CategoryId { get; set; }
 
         // TODO: Upload Image
