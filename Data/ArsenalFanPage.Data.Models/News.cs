@@ -8,14 +8,12 @@
     {
         public News()
         {
-            this.Images = new HashSet<Image>();
+            this.Comments = new HashSet<Comment>();
         }
 
-        public string GeneralTitle { get; set; }
+        public string Title { get; set; }
 
-        public string DescriptionTitle { get; set; }
-
-        public string Description { get; set; }
+        public string Content { get; set; }
 
         public string CreatedByUserId { get; set; }
 
@@ -25,6 +23,10 @@
 
         public virtual Category Category { get; set; }
 
-        public virtual ICollection<Image> Images { get; set; }
+        public int ImageId { get; set; }
+
+        public virtual Image Image { get; set; }
+
+        public ICollection<Comment> Comments { get; set; }
     }
 }

@@ -15,10 +15,6 @@
 
         public virtual News News { get; set; }
 
-        public string CreatedByUserId { get; set; }
-
-        public virtual ApplicationUser CreatedByUser { get; set; }
-
         public string Extension { get; set; }
     }
 }
