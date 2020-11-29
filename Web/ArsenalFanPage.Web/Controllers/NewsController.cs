@@ -11,13 +11,16 @@
     public class NewsController : BaseController
     {
         private readonly INewsService newsService;
+        private readonly ICategoriesService categoriesService;
         private readonly UserManager<ApplicationUser> userManager;
 
         public NewsController(
             INewsService newsService,
+            ICategoriesService categoriesService,
             UserManager<ApplicationUser> userManager)
         {
             this.newsService = newsService;
+            this.categoriesService = categoriesService;
             this.userManager = userManager;
         }
 
@@ -32,7 +35,12 @@
         // [Authorize]
         public IActionResult Create()
         {
-            return this.View();
+            var categories = this.categoriesService.GetAll<CategoryDropDownViewModel>();
+            var viewModel = new NewsCreateInputModel();
+
+            viewModel.Categories = categories;
+
+            return this.View(viewModel);
         }
 
         [HttpPost("News/Create")]
