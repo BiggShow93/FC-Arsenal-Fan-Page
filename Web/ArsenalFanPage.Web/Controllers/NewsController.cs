@@ -1,17 +1,56 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-
-namespace ArsenalFanPage.Web.Controllers
+﻿namespace ArsenalFanPage.Web.Controllers
 {
+    using System.Threading.Tasks;
+
+    using ArsenalFanPage.Data.Models;
+    using ArsenalFanPage.Services.Data;
+    using ArsenalFanPage.Web.ViewModels.News;
+    using Microsoft.AspNetCore.Identity;
+    using Microsoft.AspNetCore.Mvc;
+
     public class NewsController : BaseController
     {
+        private readonly INewsService newsService;
+        private readonly UserManager<ApplicationUser> userManager;
+
+        public NewsController(
+            INewsService newsService,
+            UserManager<ApplicationUser> userManager)
+        {
+            this.newsService = newsService;
+            this.userManager = userManager;
+        }
+
         [HttpGet("/News")]
         public IActionResult News()
         {
             return this.View();
+        }
+
+        [HttpGet("News/Create")]
+
+        // [Authorize]
+        public IActionResult Create()
+        {
+            return this.View();
+        }
+
+        [HttpPost("News/Create")]
+
+        // TODO: ADMIN [Authorize]
+        public async Task<IActionResult> Create(NewsCreateInputModel input)
+        {
+            if (!this.ModelState.IsValid)
+            {
+                return this.View(input);
+            }
+
+            var user = await this.userManager.GetUserAsync(this.User);
+
+            await this.newsService.CreateAsync(
+                input.Title, input.CategoryId, input.Content, user.Id);
+
+            return this.RedirectToAction();
         }
     }
 }
