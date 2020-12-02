@@ -1,13 +1,22 @@
 ﻿namespace ArsenalFanPage.Web.Controllers
 {
     using System.Diagnostics;
+    using System.Linq;
 
+    using ArsenalFanPage.Data;
     using ArsenalFanPage.Web.ViewModels;
-
+    using ArsenalFanPage.Web.ViewModels.Home;
     using Microsoft.AspNetCore.Mvc;
 
     public class HomeController : BaseController
     {
+        private readonly ApplicationDbContext dbContext;
+
+        public HomeController(ApplicationDbContext dbContext)
+        {
+            this.dbContext = dbContext;
+        }
+
         public IActionResult Index()
         {
             return this.View();

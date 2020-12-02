@@ -3,6 +3,8 @@
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
+    using ArsenalFanPage.Data.Models;
+
     public class NewsCreateInputModel
     {
         [Required]
@@ -18,8 +20,8 @@
         [Display(Name = "Category")]
         public int CategoryId { get; set; }
 
-        public IEnumerable<CategoryDropDownViewModel> Categories { get; set; }
+        public Image Image { get; set; }
 
-        // TODO: Upload Image
+        public IEnumerable<CategoryDropDownViewModel> Categories { get; set; }
     }
 }

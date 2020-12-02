@@ -12,8 +12,7 @@
         private readonly IDeletableEntityRepository<Category> categoriesRepository;
 
         public CategoriesService(
-            IDeletableEntityRepository<Category> categoriesRepository
-            )
+            IDeletableEntityRepository<Category> categoriesRepository)
         {
             this.categoriesRepository = categoriesRepository;
         }

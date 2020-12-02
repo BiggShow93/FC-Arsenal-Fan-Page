@@ -58,7 +58,7 @@
             await this.newsService.CreateAsync(
                 input.Title, input.CategoryId, input.Content, user.Id);
 
-            return this.RedirectToAction();
+            return this.View("/");
         }
     }
 }

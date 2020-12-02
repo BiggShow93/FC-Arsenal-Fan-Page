@@ -9,10 +9,18 @@
   <PropertyGroup>
     <CodeAnalysisRuleSet>..\..\Rules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Remove="Views\History\History.cshtml" />
+  </ItemGroup>
   <ItemGroup>
     <AdditionalFiles Include="..\..\stylecop.json" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Views\History\History.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="wwwroot\img\logo.jpeg" />
     <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.js" />
     <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.min.js" />
     <None Include="wwwroot\lib\jquery-validation-unobtrusive\dist\jquery.validate.unobtrusive.js" />
@@ -50,5 +58,11 @@
     <ProjectReference Include="..\..\Services\ArsenalFanPage.Services\ArsenalFanPage.Services.csproj" />
     <ProjectReference Include="..\ArsenalFanPage.Web.Infrastructure\ArsenalFanPage.Web.Infrastructure.csproj" />
     <ProjectReference Include="..\ArsenalFanPage.Web.ViewModels\ArsenalFanPage.Web.ViewModels.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="wwwroot\img\logo.jpeg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 </Project>
