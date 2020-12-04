@@ -36,9 +36,10 @@
         public IActionResult Create()
         {
             var categories = this.categoriesService.GetAll<CategoryDropDownViewModel>();
-            var viewModel = new NewsCreateInputModel();
-
-            viewModel.Categories = categories;
+            var viewModel = new NewsCreateInputModel
+            {
+                Categories = categories,
+            };
 
             return this.View(viewModel);
         }
