@@ -32,29 +32,31 @@
     <div class="nav-bar">
         <div class="container">
             <nav class="navbar navbar-expand-md bg-dark navbar-dark">
-                
-                    <ul class="navbar-nav mr-auto">
 
-                        <li class="nav-item">
-                            <a href="/" class="nav-item nav-link">News</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/History" class="nav-item nav-link">History</a>
-                        </li>
+                <ul class="navbar-nav mr-auto">
 
-                        <li class="nav-item">
-                            <a href="/Table" class="nav-item nav-link">Table</a>
-                        </li>
+                    <li class="nav-item">
+                        <a href="/" class="nav-item nav-link">News</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/History" class="nav-item nav-link">History</a>
+                    </li>
 
-                        <li class="nav-item">
-                            <a href="/Identity/Account/Login" class="nav-item nav-link">Players</a>
-                        </li>
+                    <li class="nav-item">
+                        <a href="/Table" class="nav-item nav-link">Table</a>
+                    </li>
 
-                        <li class="nav-item">
-                            <a href="/News/Create" class="nav-item nav-link">Create News</a>
-                        </li>
+                    <li class="nav-item">
+                        <a href="/Identity/Account/Login" class="nav-item nav-link">Players</a>
+                    </li>
 
-                    </ul>
+                    <li class="nav-item">
+                        <a href="/News/Create" class="nav-item nav-link">Create News</a>
+                    </li>
+
+                </ul>
+                @if (!this.User.Identity.IsAuthenticated)
+                {
 
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
@@ -64,7 +66,18 @@
                             <a href="/Identity/Account/Register" class="nav-item nav-link">Register</a>
                         </li>
                     </ul>
-            </nav>
+                }
+                @if (this.User.Identity.IsAuthenticated)
+                {
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a href="/Identity/Account/Logout" class="nav-item nav-link">Logout</a>
+                </li>
+            </ul>
+                        }
+
+
+                </nav>
         </div>
     </div>
     <div class="container">
