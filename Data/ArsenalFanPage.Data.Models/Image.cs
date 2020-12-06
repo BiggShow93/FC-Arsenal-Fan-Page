@@ -11,6 +11,8 @@
             this.Id = Guid.NewGuid().ToString();
         }
 
+        public string RemoteImageUrl { get; set; }
+
         public int NewsId { get; set; }
 
         public virtual News News { get; set; }

@@ -21,6 +21,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Data\ArsenalFanPage.Data.Common\ArsenalFanPage.Data.Common.csproj" />
     <ProjectReference Include="..\..\Data\ArsenalFanPage.Data.Models\ArsenalFanPage.Data.Models.csproj" />
+    <ProjectReference Include="..\..\Web\ArsenalFanPage.Web.ViewModels\ArsenalFanPage.Web.ViewModels.csproj" />
     <ProjectReference Include="..\ArsenalFanPage.Services.Mapping\ArsenalFanPage.Services.Mapping.csproj" />
   </ItemGroup>
 

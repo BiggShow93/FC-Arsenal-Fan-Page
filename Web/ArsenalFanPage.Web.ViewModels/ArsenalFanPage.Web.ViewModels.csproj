@@ -23,4 +23,8 @@
     <ProjectReference Include="..\..\Services\ArsenalFanPage.Services.Mapping\ArsenalFanPage.Services.Mapping.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Category\" />
+  </ItemGroup>
+
 </Project>
