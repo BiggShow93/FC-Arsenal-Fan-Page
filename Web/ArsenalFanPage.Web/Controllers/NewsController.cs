@@ -1,10 +1,13 @@
 ﻿namespace ArsenalFanPage.Web.Controllers
 {
+    using System.Linq;
     using System.Threading.Tasks;
-
+    using ArsenalFanPage.Data.Common.Repositories;
     using ArsenalFanPage.Data.Models;
     using ArsenalFanPage.Services.Data;
+    using ArsenalFanPage.Web.ViewModels.Category;
     using ArsenalFanPage.Web.ViewModels.News;
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
 
@@ -27,12 +30,15 @@
         [HttpGet("/News")]
         public IActionResult News()
         {
-            return this.View();
+            // TODO: Implement
+            var viewModel = this.newsService.GetNewsCountByCategory();
+
+            return this.View(viewModel);
         }
 
+        [Authorize]
         [HttpGet("News/Create")]
 
-        // [Authorize]
         public IActionResult Create()
         {
             var categories = this.categoriesService.GetAll<CategoryDropDownViewModel>();
@@ -44,6 +50,7 @@
             return this.View(viewModel);
         }
 
+        [Authorize]
         [HttpPost("News/Create")]
 
         // TODO: ADMIN [Authorize]

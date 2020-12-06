@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@model ArsenalFanPage.Web.ViewModels.News.NewsListViewModel
+<!DOCTYPE html>
 <html lang="en">
 
 <body>
@@ -40,10 +41,10 @@
                                 Nam sodales scelerisque nunc sed convallis. Vestibulum facilisis porta erat, sit amet pharetra tortor blandit id. Nunc velit tellus, consectetur sed convallis in, tincidunt finibus nulla. Integer vel ex in mauris tincidunt tincidunt nec sed elit. Etiam pretium lectus lectus, sed aliquet erat tristique euismod. Praesent faucibus nisl augue, ac tempus libero pellentesque malesuada. Vivamus iaculis imperdiet laoreet. Aliquam vel felis felis. Proin sed sapien erat. Etiam a quam et metus tempor rutrum. Curabitur in faucibus justo. Etiam imperdiet iaculis urna.
                             </p>
                         </div>
-                    </div>  
+                    </div>
                 </div>
 
-                    @*TODO :Commets*@
+                @*TODO :Commets*@
 
                 <div class="col-lg-4">
                     <div class="sidebar">
@@ -242,7 +243,7 @@
                             <div class="category">
                                 <ul>
                                     <li><a href="">National</a><span>(98)</span></li>
-                                    <li><a href="">International</a><span>(87)</span></li>
+                                    <li><a href="/History">History</a><span>(@this.Model.HistoryCount)</span></li>
                                     <li><a href="">Economics</a><span>(76)</span></li>
                                     <li><a href="">Politics</a><span>(65)</span></li>
                                     <li><a href="">Lifestyle</a><span>(54)</span></li>
@@ -251,10 +252,10 @@
                                 </ul>
                             </div>
                         </div>
-                        </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 </body>
 </html>
