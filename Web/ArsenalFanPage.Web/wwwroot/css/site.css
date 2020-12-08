@@ -2,7 +2,7 @@
 /********** General CSS ***********/
 /**********************************/
 body {
-    color: #000000;
+    color: #ffffff;
     font-family: 'Montserrat', sans-serif;
     font-weight: 400;
     background: #ffffff;
@@ -16,7 +16,7 @@ a {
     a:hover,
     a:active,
     a:focus {
-        color: #000000;
+        color: #ffffff;
         outline: none;
         text-decoration: none;
     }
@@ -24,7 +24,7 @@ a {
 p {
     padding: 0;
     margin: 0 0 15px 0;
-    color: #ffffff;
+    color: #000000;
 }
 
 h1,
@@ -63,7 +63,7 @@ h6 {
 }
 
     .back-to-top:hover {
-        background: #000000;
+        background: #ffffff;
     }
 
     .back-to-top i {
@@ -497,10 +497,10 @@ button.btn {
     }
 
     .cat-news h2 {
-        color: #000000;
+        color: #ffffff;
         margin-bottom: 30px;
         padding-bottom: 15px;
-        border-bottom: 3px double #000000;
+        border-bottom: 3px double #ffffff;
     }
 
     .cat-news .cn-img {
@@ -635,14 +635,14 @@ button.btn {
     }
 
         .tab-news .tn-title a {
-            color: #000000;
+            color: #ffffff;
             font-size: 18px;
             font-weight: 400;
             transition: all .3s;
         }
 
             .tab-news .tn-title a:hover {
-                color: #DF0000;
+                color: #ffffff;
             }
 
 
@@ -704,10 +704,10 @@ button.btn {
     }
 
         .main-news .mn-list h2 {
-            color: #000000;
+            color: #ffffff;
             margin-bottom: 30px;
             padding-bottom: 15px;
-            border-bottom: 3px double #000000;
+            border-bottom: 3px double #ffffff;
         }
 
         .main-news .mn-list ul {
@@ -725,7 +725,7 @@ button.btn {
                 }
 
                 .main-news .mn-list ul li a {
-                    color: #000000;
+                    color: #ffffff;
                     display: block;
                     line-height: 23px;
                 }
@@ -735,12 +735,12 @@ button.btn {
                     content: '\f061';
                     font-family: 'Font Awesome 5 Free';
                     font-weight: 900;
-                    color: #000000;
+                    color: #ffffff;
                     left: 1px;
                 }
 
                 .main-news .mn-list ul li a:hover {
-                    color: #DF0000;
+                    color: #ffffff;
                 }
 
 
@@ -796,7 +796,7 @@ button.btn {
         .single-news .sn-content h1.sn-title {
             display: block;
             width: 100%;
-            color: #000000;
+            color: #ffffff;
         }
 
     .single-news .sn-related {
@@ -804,7 +804,7 @@ button.btn {
     }
 
         .single-news .sn-related h2 {
-            color: #000000;
+            color: #ffffff;
             margin-bottom: 30px;
             padding-bottom: 15px;
             border-bottom: 3px double #000000;
@@ -857,7 +857,7 @@ button.btn {
         z-index: 1;
         transition: .5s;
         color: #ffffff;
-        background: #000000;
+        background: #ffffff;
         border-radius: 4px;
     }
 
