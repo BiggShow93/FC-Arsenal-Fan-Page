@@ -16,23 +16,31 @@
     });
 </script>
 
-<form method="post" asp-action="Create">
+<form method="post" asp-action="Create" enctype="multipart/form-data">
     <div>
-        <label asp-for="Title"></label>
+        <label style="color:white" asp-for="Title"></label>
         <input asp-for="Title" class="form-control" />
         <span asp-validation-for="Title" class="text-danger"></span>
     </div>
+
     <div>
-        <label asp-for="CategoryId"></label>
+        <label style="color:white" asp-for="CategoryId"></label>
         <select asp-for="CategoryId" asp-items="categories" class="form-control"></select>
-        <span asp-validation-for="CategoryId" class="text-danger"></span>
+        <span style="color:white" asp-validation-for="CategoryId" class="text-danger"></span>
     </div>
 
     <div>
-        <label asp-for="Content"></label>
+        <label style="color:white" asp-for="Content"></label>
         <textarea asp-for="Content" class="form-control"></textarea>
         <span asp-validation-for="Content" class="text-danger"></span>
     </div>
+
+    <div>
+        <label style="color:white" asp-for="Image"></label>
+        <input asp-for="Image" class="form-control" />
+        <span asp-validation-for="Image" class="text-danger"></span>
+    </div>
+
     <hr />
     <input type="submit" class="btn btn-primary" />
 </form>

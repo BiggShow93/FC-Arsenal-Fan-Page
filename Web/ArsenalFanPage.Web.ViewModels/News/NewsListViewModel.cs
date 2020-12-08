@@ -6,6 +6,5 @@
     public class NewsListViewModel : PagingViewModel
     {
         public IEnumerable<NewsInListViewModel> News { get; set; }
-       
     }
 }

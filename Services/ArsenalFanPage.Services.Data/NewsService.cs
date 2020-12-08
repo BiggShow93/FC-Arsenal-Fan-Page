@@ -1,6 +1,8 @@
 ﻿namespace ArsenalFanPage.Services.Data
 {
+    using System;
     using System.Collections.Generic;
+    using System.IO;
     using System.Linq;
     using System.Threading.Tasks;
 
@@ -12,9 +14,11 @@
 
     public class NewsService : INewsService
     {
+        private readonly string[] allowedExtensions = new[] { "jpg", "jpeg", "png", "gif" };
         private readonly IDeletableEntityRepository<News> newsRepository;
 
-        public NewsService(IDeletableEntityRepository<News> newsRepository)
+        public NewsService(
+            IDeletableEntityRepository<News> newsRepository)
         {
             this.newsRepository = newsRepository;
         }
@@ -29,7 +33,7 @@
             return data;
         }
 
-        public async Task CreateAsync(string title, int categoryId, string content, string userId)
+        public async Task CreateAsync(NewsCreateInputModel input, string title, int categoryId, string content, string userId, string imagePath)
         {
             var news = new News()
             {
@@ -38,6 +42,29 @@
                 Title = title,
                 CreatedByUserId = userId,
             };
+
+            var extension = Path.GetExtension(input.Image.FileName).TrimStart('.');
+
+            if (!this.allowedExtensions.Any(x => extension.EndsWith(x)))
+            {
+                throw new Exception($"Invalid image extension {extension}");
+            }
+
+            Directory.CreateDirectory($"{imagePath}/news/");
+
+            var dbImage = new Image
+            {
+                News = news,
+                Extension = extension,
+            };
+
+            news.Image = dbImage;
+            //news.ImageId = dbImage.Id;
+
+            var physicalPath = $"{imagePath}/news/{dbImage.Id}.{extension}";
+
+            using Stream fileStream = new FileStream(physicalPath, FileMode.Create);
+            await input.Image.CopyToAsync(fileStream);
 
             await this.newsRepository.AddAsync(news);
             await this.newsRepository.SaveChangesAsync();

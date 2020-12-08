@@ -1,8 +1,7 @@
-﻿using ArsenalFanPage.Services.Mapping;
-
-namespace ArsenalFanPage.Web.ViewModels.News
+﻿namespace ArsenalFanPage.Web.ViewModels.News
 {
     using ArsenalFanPage.Data.Models;
+    using ArsenalFanPage.Services.Mapping;
     using AutoMapper;
 
     public class NewsInListViewModel : IMapFrom<News>, IHaveCustomMappings

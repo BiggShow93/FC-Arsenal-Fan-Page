@@ -8,7 +8,7 @@
 
     public interface INewsService
     {
-        Task CreateAsync(string title, int categoryId, string content, string userId);
+        Task CreateAsync(NewsCreateInputModel input, string title, int categoryId, string content, string userId, string imagePath);
 
         NewsInputModel GetNewsCountByCategory();
 

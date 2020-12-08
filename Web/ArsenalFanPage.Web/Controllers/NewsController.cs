@@ -1,5 +1,6 @@
 ﻿namespace ArsenalFanPage.Web.Controllers
 {
+    using System;
     using System.Linq;
     using System.Threading.Tasks;
     using ArsenalFanPage.Data.Common.Repositories;
@@ -8,6 +9,7 @@
     using ArsenalFanPage.Web.ViewModels.Category;
     using ArsenalFanPage.Web.ViewModels.News;
     using Microsoft.AspNetCore.Authorization;
+    using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
 
@@ -16,15 +18,18 @@
         private readonly INewsService newsService;
         private readonly ICategoriesService categoriesService;
         private readonly UserManager<ApplicationUser> userManager;
+        private readonly IWebHostEnvironment environment;
 
         public NewsController(
             INewsService newsService,
             ICategoriesService categoriesService,
-            UserManager<ApplicationUser> userManager)
+            UserManager<ApplicationUser> userManager,
+            IWebHostEnvironment environment)
         {
             this.newsService = newsService;
             this.categoriesService = categoriesService;
             this.userManager = userManager;
+            this.environment = environment;
         }
 
         [HttpGet("/News")]
@@ -36,7 +41,7 @@
             return this.View(viewModel);
         }
 
-        [Authorize]
+        // [Authorize]
         [HttpGet("News/Create")]
 
         public IActionResult Create()
@@ -56,15 +61,23 @@
         // TODO: ADMIN [Authorize]
         public async Task<IActionResult> Create(NewsCreateInputModel input)
         {
-            if (!this.ModelState.IsValid)
-            {
-                return this.View(input);
-            }
+            //if (!this.ModelState.IsValid)
+            //{
+            //    return this.View(input);
+            //}
 
             var user = await this.userManager.GetUserAsync(this.User);
 
-            await this.newsService.CreateAsync(
-                input.Title, input.CategoryId, input.Content, user.Id);
+            try
+            {
+                await this.newsService.CreateAsync(
+               input, input.Title, input.CategoryId, input.Content, user.Id, $"{this.environment.WebRootPath}/images");
+            }
+            catch (Exception ex)
+            {
+
+                this.ModelState.AddModelError(string.Empty, ex.Message);
+            }
 
             return this.View("/");
         }

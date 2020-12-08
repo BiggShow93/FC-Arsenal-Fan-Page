@@ -3,7 +3,7 @@
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
-    using ArsenalFanPage.Data.Models;
+    using Microsoft.AspNetCore.Http;
 
     public class NewsCreateInputModel
     {
@@ -22,7 +22,8 @@
         [Display(Name = "Category")]
         public int CategoryId { get; set; }
 
-        public Image Image { get; set; }
+        [Required]
+        public IFormFile Image { get; set; }
 
         public IEnumerable<CategoryDropDownViewModel> Categories { get; set; }
     }
