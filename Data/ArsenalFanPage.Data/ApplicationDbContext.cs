@@ -55,6 +55,11 @@
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
+            builder.Entity<Image>()
+                .HasOne<News>(i => i.News)
+                .WithOne(n => n.Image)
+                .HasForeignKey<News>(n => n.ImageId);
+
             // Needed for Identity models configuration
             base.OnModelCreating(builder);
 

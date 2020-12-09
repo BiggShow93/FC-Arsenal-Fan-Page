@@ -59,7 +59,7 @@
             };
 
             news.Image = dbImage;
-            //news.ImageId = dbImage.Id;
+            news.ImageId = dbImage.Id;
 
             var physicalPath = $"{imagePath}/news/{dbImage.Id}.{extension}";
 

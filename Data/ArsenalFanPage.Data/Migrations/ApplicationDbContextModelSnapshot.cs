@@ -237,9 +237,6 @@ namespace ArsenalFanPage.Data.Migrations
 
                     b.HasIndex("IsDeleted");
 
-                    b.HasIndex("NewsId")
-                        .IsUnique();
-
                     b.ToTable("Images");
                 });
 
@@ -265,8 +262,8 @@ namespace ArsenalFanPage.Data.Migrations
                     b.Property<DateTime?>("DeletedOn")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("ImageId")
-                        .HasColumnType("int");
+                    b.Property<string>("ImageId")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
@@ -282,6 +279,10 @@ namespace ArsenalFanPage.Data.Migrations
                     b.HasIndex("CategoryId");
 
                     b.HasIndex("CreatedByUserId");
+
+                    b.HasIndex("ImageId")
+                        .IsUnique()
+                        .HasFilter("[ImageId] IS NOT NULL");
 
                     b.HasIndex("IsDeleted");
 
@@ -437,15 +438,6 @@ namespace ArsenalFanPage.Data.Migrations
                         .HasForeignKey("UserId");
                 });
 
-            modelBuilder.Entity("ArsenalFanPage.Data.Models.Image", b =>
-                {
-                    b.HasOne("ArsenalFanPage.Data.Models.News", "News")
-                        .WithOne("Image")
-                        .HasForeignKey("ArsenalFanPage.Data.Models.Image", "NewsId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("ArsenalFanPage.Data.Models.News", b =>
                 {
                     b.HasOne("ArsenalFanPage.Data.Models.Category", "Category")
@@ -457,6 +449,10 @@ namespace ArsenalFanPage.Data.Migrations
                     b.HasOne("ArsenalFanPage.Data.Models.ApplicationUser", "CreatedByUser")
                         .WithMany("News")
                         .HasForeignKey("CreatedByUserId");
+
+                    b.HasOne("ArsenalFanPage.Data.Models.Image", "Image")
+                        .WithOne("News")
+                        .HasForeignKey("ArsenalFanPage.Data.Models.News", "ImageId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

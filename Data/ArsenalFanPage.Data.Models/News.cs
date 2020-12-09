@@ -23,7 +23,7 @@
 
         public virtual Category Category { get; set; }
 
-        public int ImageId { get; set; }
+        public string ImageId { get; set; }
 
         public virtual Image Image { get; set; }
 
