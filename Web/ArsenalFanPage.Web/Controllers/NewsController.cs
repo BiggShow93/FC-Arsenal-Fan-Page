@@ -38,11 +38,11 @@
             // TODO: Implement
             var viewModel = this.newsService.GetNewsCountByCategory();
 
-            return this.View(viewModel);
+            return this.View();
         }
 
         // [Authorize]
-        [HttpGet("News/Create")]
+        [HttpGet]
 
         public IActionResult Create()
         {

@@ -70,7 +70,7 @@
             await this.newsRepository.SaveChangesAsync();
         }
 
-        public IEnumerable<T> GetNews<T>(int page, int itemsPerPage = 8)
+        public IEnumerable<T> GetNews<T>(int page, int itemsPerPage = 4)
         {
             var news = this.newsRepository.AllAsNoTracking()
                 .OrderByDescending(x => x.Id)

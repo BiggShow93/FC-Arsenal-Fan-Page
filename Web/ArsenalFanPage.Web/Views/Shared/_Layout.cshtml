@@ -39,10 +39,11 @@
                     <ul class="navbar-nav mr-auto">
 
                         <li class="nav-item active">
-                            <a href="/" class="nav-item nav-link">News</a>
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">News</a>
                         </li>
+
                         <li class="nav-item active">
-                            <a href="/History/History" class="nav-item nav-link ">History</a>
+                            <a class="nav-link" asp-area="" asp-controller="History" asp-action="News">History</a>
                         </li>
 
                         <li class="nav-item active">
@@ -54,7 +55,7 @@
                         </li>
 
                         <li class="nav-item active">
-                            <a href="/News/Create" class="nav-item nav-link">Create News</a>
+                            <a class="nav-link" asp-area="" asp-controller="News" asp-action="Create">Create News</a>
                         </li>
 
                     </ul>

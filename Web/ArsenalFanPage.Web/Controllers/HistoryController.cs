@@ -16,9 +16,9 @@
         }
 
         [HttpGet]
-        public IActionResult History(int id = 1)
+        public IActionResult News(int id = 1)
         {
-            const int ItemsPerPage = 2;
+            const int ItemsPerPage = 3;
 
             var viewModel = new NewsListViewModel
             {
