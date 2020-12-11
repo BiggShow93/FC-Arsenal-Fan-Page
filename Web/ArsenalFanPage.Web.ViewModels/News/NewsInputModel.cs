@@ -1,8 +1,11 @@
 ﻿namespace ArsenalFanPage.Web.ViewModels.Category
 {
+    using System.Collections.Generic;
+
+    using ArsenalFanPage.Web.ViewModels.News;
+
     public class NewsInputModel
-    {
-        // TODO: More Models needed
+    { 
         public int HistoryCount { get; set; }
     }
 }

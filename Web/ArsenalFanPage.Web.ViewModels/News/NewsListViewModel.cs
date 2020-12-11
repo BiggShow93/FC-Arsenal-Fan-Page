@@ -1,6 +1,5 @@
 ﻿namespace ArsenalFanPage.Web.ViewModels.News
 {
-    using System;
     using System.Collections.Generic;
 
     public class NewsListViewModel : PagingViewModel

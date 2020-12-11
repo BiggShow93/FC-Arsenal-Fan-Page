@@ -1,12 +1,11 @@
 ﻿namespace ArsenalFanPage.Web.Controllers
 {
     using System;
-    using System.Linq;
     using System.Threading.Tasks;
-    using ArsenalFanPage.Data.Common.Repositories;
+    
+
     using ArsenalFanPage.Data.Models;
     using ArsenalFanPage.Services.Data;
-    using ArsenalFanPage.Web.ViewModels.Category;
     using ArsenalFanPage.Web.ViewModels.News;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Hosting;

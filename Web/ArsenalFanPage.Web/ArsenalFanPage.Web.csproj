@@ -54,6 +54,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Update="wwwroot\favicon.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Update="wwwroot\img\logo.jpeg">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Content>

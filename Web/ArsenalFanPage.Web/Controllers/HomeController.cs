@@ -4,28 +4,37 @@
     using System.Linq;
 
     using ArsenalFanPage.Data;
+    using ArsenalFanPage.Data.Common.Repositories;
+    using ArsenalFanPage.Data.Models;
+    using ArsenalFanPage.Services.Data;
     using ArsenalFanPage.Web.ViewModels;
+    using ArsenalFanPage.Web.ViewModels.Category;
     using ArsenalFanPage.Web.ViewModels.Home;
+    using ArsenalFanPage.Web.ViewModels.News;
     using Microsoft.AspNetCore.Mvc;
 
     public class HomeController : BaseController
     {
-        private readonly ApplicationDbContext dbContext;
+        private readonly INewsService newsService;
 
-        public HomeController(ApplicationDbContext dbContext)
+        public HomeController(INewsService newsService)
         {
-            this.dbContext = dbContext;
+            this.newsService = newsService;
         }
 
         public IActionResult Index()
         {
-            return this.View();
+            var news = this.newsService.GetNews<NewsInListViewModel>();
+
+            var viewModel = new NewsListViewModel
+            {
+                NewsCount = this.newsService.GetCount(),
+                News = news,
+            };
+
+            return this.View(viewModel);
         }
 
-        public IActionResult Privacy()
-        {
-            return this.View();
-        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
@@ -33,5 +42,13 @@
             return this.View(
                 new ErrorViewModel { RequestId = Activity.Current?.Id ?? this.HttpContext.TraceIdentifier });
         }
+
+        public IActionResult NewsById(int id)
+        {
+            var news = this.newsService.GetById<SingleNewsViewModel>(id);
+
+            return this.View(news);
+        }
+
     }
 }

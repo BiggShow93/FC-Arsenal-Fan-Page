@@ -1,6 +1,7 @@
 ﻿@model ArsenalFanPage.Web.ViewModels.News.NewsListViewModel
 @{
     this.ViewData["Title"] = "History";
+    var pesho = Model.News.FirstOrDefault();
 
 }
 
@@ -17,7 +18,7 @@
                             <div class="tn-img">
                                 <img src="@news.ImageUrl" />
                                 <div class="tn-title">
-                                    <a href="/News">@news.Title</a>
+                                    <a asp-action="NewsById" asp-route-id="@news.Id">@news.Title</a>
                                 </div>
                             </div>
                         </div>

@@ -82,9 +82,31 @@
             return news;
         }
 
+        public IEnumerable<T> GetNews<T>()
+        {
+            var news = this.newsRepository.AllAsNoTracking()
+                .OrderByDescending(x => x.Id)
+                .To<T>()
+                .ToList();
+
+            return news;
+        }
+
+
+
         public int GetCount()
         {
             return this.newsRepository.All().Count();
+        }
+
+        public T GetById<T>(int id)
+        {
+            var news = this.newsRepository.AllAsNoTracking()
+                .Where(x => x.Id == id)
+                .To<T>()
+                .FirstOrDefault();
+
+            return news;
         }
     }
 }

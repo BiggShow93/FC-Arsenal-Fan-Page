@@ -20,14 +20,24 @@
         {
             const int ItemsPerPage = 3;
 
+            var historyNews = this.newsService.GetNews<NewsInListViewModel>(id, ItemsPerPage);
+
             var viewModel = new NewsListViewModel
-            {
-                ItemsPerPage = ItemsPerPage,
-                PageNumer = id,
-                NewsCount = this.newsService.GetCount(),
-                News = this.newsService.GetNews<NewsInListViewModel>(id, ItemsPerPage).Where(x => x.CategoryName.ToLower() == "history"),
-            };
+                {
+                    ItemsPerPage = ItemsPerPage,
+                    PageNumer = id,
+                    NewsCount = this.newsService.GetCount(),
+                    News = historyNews,
+                };
+
             return this.View(viewModel);
+        }
+
+        public IActionResult NewsById(int id)
+        {
+            var news = this.newsService.GetById<SingleNewsViewModel>(id);
+
+            return this.View(news);
         }
     }
 }
