@@ -19,12 +19,13 @@
             const int ItemsPerPage = 3;
 
             var historyNews = this.newsService.GetNews<NewsInListViewModel>(id, ItemsPerPage);
+            var category = "HISTORY";
 
             var viewModel = new NewsListViewModel
                 {
                     ItemsPerPage = ItemsPerPage,
                     PageNumer = id,
-                    NewsCount = this.newsService.GetCount(),
+                    Count = this.newsService.GetCount(category),
                     News = historyNews,
                 };
 

@@ -6,7 +6,7 @@
 {
     public int PageNumer { get; set; }
 
-    public int NewsCount { get; set; }
+    public int Count { get; set; }
 
     public bool HasPreviosPage => this.PageNumer > 1;
 
@@ -16,7 +16,7 @@
 
     public int NextPageNumber => this.PageNumer + 1;
 
-    public int PagesCount => (int)Math.Ceiling((double)this.NewsCount / this.ItemsPerPage);
+    public int PagesCount => (int)Math.Ceiling((double)this.Count / this.ItemsPerPage);
 
     public int ItemsPerPage { get; set; }
 }

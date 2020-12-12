@@ -1,13 +1,15 @@
 ﻿namespace ArsenalFanPage.Web.Controllers
 {
+    using System;
+    using System.Threading.Tasks;
+
     using ArsenalFanPage.Data.Models;
     using ArsenalFanPage.Services.Data;
     using ArsenalFanPage.Web.ViewModels.Product;
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
-    using System;
-    using System.Threading.Tasks;
 
     public class ProductsController : BaseController
     {
@@ -28,9 +30,21 @@
             this.environment = environment;
         }
 
-        public IActionResult Shop()
+        public IActionResult Shop(int id = 1)
         {
-            return this.View();
+            const int ItemsPerPage = 3;
+
+            var products = this.productService.GetProducts<ProductInListViewModel>(id, ItemsPerPage);
+
+            var viewModel = new ProductListViewModel
+            {
+                ItemsPerPage = ItemsPerPage,
+                PageNumer = id,
+                Count = this.productService.GetCount(),
+                Products = products,
+            };
+
+            return this.View(viewModel);
         }
 
         [HttpGet]
@@ -45,13 +59,13 @@
             return this.View(viewModel);
         }
 
-        [HttpPost]
+        [Authorize]
         public async Task<IActionResult> Create(ProductCreateInputModel input)
         {
-            if (!this.ModelState.IsValid)
-            {
-                return this.View(input);
-            }
+            //if (!this.ModelState.IsValid)
+            //{
+            //    return this.View(input);
+            //}
 
             var user = await this.userManager.GetUserAsync(this.User);
 
@@ -62,16 +76,17 @@
             }
             catch (Exception ex)
             {
-
                 this.ModelState.AddModelError(string.Empty, ex.Message);
             }
 
-            return this.Redirect("/");
+            return this.Redirect("/Products/Shop");
         }
 
-        public IActionResult ProductById()
+        public IActionResult ProductById(string id)
         {
-            return this.View();
+            var news = this.productService.GetById<SingleProductViewModel>(id);
+
+            return this.View(news);
         }
     }
 }

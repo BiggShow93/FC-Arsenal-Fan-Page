@@ -15,5 +15,7 @@
         IEnumerable<T> GetProducts<T>();
 
         T GetById<T>(string id);
+
+        int GetCount();
     }
 }

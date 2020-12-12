@@ -16,7 +16,7 @@
 
         IEnumerable<T> GetNews<T>();
 
-        int GetCount();
+        int GetCount(string category = null);
 
         T GetById<T>(int id);
     }

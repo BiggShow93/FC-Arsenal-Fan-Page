@@ -92,9 +92,20 @@
             return news;
         }
 
-        public int GetCount()
+        public int GetCount(string categoryName = null)
         {
-            return this.newsRepository.All().Count();
+            var count = 0;
+
+            if (categoryName == null)
+            {
+                count = this.newsRepository.All().Count();
+            }
+            else
+            {
+                count = this.newsRepository.All().Where(x => x.Category.Name == categoryName).Count();
+            }
+
+            return count;
         }
 
         public T GetById<T>(int id)

@@ -91,5 +91,10 @@
 
             return products;
         }
+
+        public int GetCount()
+        {
+            return this.productRepository.All().Count();
+        }
     }
 }

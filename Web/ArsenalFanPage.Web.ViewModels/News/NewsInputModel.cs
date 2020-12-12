@@ -5,7 +5,7 @@
     using ArsenalFanPage.Web.ViewModels.News;
 
     public class NewsInputModel
-    { 
+    {
         public int HistoryCount { get; set; }
     }
 }

@@ -1,4 +1,11 @@
-﻿<!DOCTYPE html>
+﻿@model ArsenalFanPage.Web.ViewModels.Product.ProductListViewModel
+
+@{
+    this.ViewData["Title"] = "Shop";
+    var product = Model.Products.Where(x => x.ProductCategoryName == "T-Shirt").ToArray();
+}
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -23,18 +30,18 @@
             <div class="col-lg-3 col-sm-3 col-md-3">
                 <div class="box-img">
                     <div class="tn-title">
-                        <a class="nav-link" asp-area="" asp-controller="Products" asp-action="ProductById"><h4>T-Shirt 2020/2021</h4></a>
+                        <a asp-action="ProductById" asp-route-id="@Model.Products.First().Id"><h4>@Model.Products.First().Name</h4></a>
                     </div>
-                    <img src="/images/product/T-shirt-2021.png" alt="" />
+                    <img src="@Model.Products.First().ImageUrl"/>
                 </div>
             </div>
-            <div class="col-lg-3 col-sm-3 col-md-3">               
-                    <div class="box-img">
-                        <div class="tn-title">
-                            <a class="nav-link" asp-area="" asp-controller="Products" asp-action="ProductById"><h4>Product</h4></a>
-                        </div>
-                        <img src="/images/product/2.png" alt="" />
+            <div class="col-lg-3 col-sm-3 col-md-3">
+                <div class="box-img">
+                    <div class="tn-title">
+                        <a class="nav-link" asp-area="" asp-controller="Products" asp-action="ProductById"><h4>Product</h4></a>
                     </div>
+                    <img src="/images/product/2.png" alt="" />
+                </div>
             </div>
             <div class="col-lg-3 col-sm-6 col-md-3">
                 <a href="productpage.html">

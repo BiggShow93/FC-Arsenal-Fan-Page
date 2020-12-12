@@ -28,7 +28,7 @@
 
             var viewModel = new NewsListViewModel
             {
-                NewsCount = this.newsService.GetCount(),
+                Count = this.newsService.GetCount(),
                 News = news,
             };
 

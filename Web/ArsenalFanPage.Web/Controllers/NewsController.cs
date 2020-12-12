@@ -72,7 +72,6 @@
             }
             catch (Exception ex)
             {
-
                 this.ModelState.AddModelError(string.Empty, ex.Message);
             }
 
