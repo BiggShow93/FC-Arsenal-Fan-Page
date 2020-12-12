@@ -13,10 +13,14 @@
 
         public string RemoteImageUrl { get; set; }
 
+        public string Extension { get; set; }
+
         public int NewsId { get; set; }
 
         public virtual News News { get; set; }
 
-        public string Extension { get; set; }
+        public int ProductId { get; set; }
+
+        public virtual Product Product { get; set; }
     }
 }

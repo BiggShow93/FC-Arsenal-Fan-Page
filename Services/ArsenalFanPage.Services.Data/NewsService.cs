@@ -92,8 +92,6 @@
             return news;
         }
 
-
-
         public int GetCount()
         {
             return this.newsRepository.All().Count();

@@ -1,6 +1,19 @@
 ﻿namespace ArsenalFanPage.Services.Data
 {
-   public interface IProductService
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
+
+    using ArsenalFanPage.Web.ViewModels.Product;
+
+    public interface IProductService
     {
+        Task CreateAsync(
+            ProductCreateInputModel input, string userId, string name, string description, decimal price, int quantity, int categoryId, string imagePath);
+
+        IEnumerable<T> GetProducts<T>(int page, int itemsPerPage = 8);
+
+        IEnumerable<T> GetProducts<T>();
+
+        T GetById<T>(string id);
     }
 }

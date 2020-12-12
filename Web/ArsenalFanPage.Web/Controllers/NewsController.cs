@@ -2,7 +2,6 @@
 {
     using System;
     using System.Threading.Tasks;
-    
 
     using ArsenalFanPage.Data.Models;
     using ArsenalFanPage.Services.Data;
@@ -69,7 +68,7 @@
             try
             {
                 await this.newsService.CreateAsync(
-               input, input.Title, input.CategoryId, input.Content, user.Id, $"{this.environment.WebRootPath}/images");
+               input, input.Title, input.CategoryId, input.Content, user.Id, $"{this.environment.WebRootPath}/products");
             }
             catch (Exception ex)
             {
