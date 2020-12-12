@@ -1,14 +1,12 @@
 ﻿@model ArsenalFanPage.Web.ViewModels.News.NewsListViewModel
+
 @{
     this.ViewData["Title"] = "History";
-    var pesho = Model.News.FirstOrDefault();
+    var historyNews = Model.News.Where(x => x.CategoryName == "HISTORY").ToArray();
 
 }
 
-
-
-@foreach (var news in Model.News)
-
+@for (int i = 0; i < historyNews.Length; i++)
 {
     <div class="top-news">
         <div class="container">
@@ -16,20 +14,16 @@
                 <div class="col-md-12 tn-left">
                         <div class="col-md-12">
                             <div class="tn-img">
-                                <img src="@news.ImageUrl" />
+                                <img src="@historyNews[i].ImageUrl" />
                                 <div class="tn-title">
-                                    <a asp-action="NewsById" asp-route-id="@news.Id">@news.Title</a>
+                                    <a asp-action="NewsById" asp-route-id="@historyNews[i].Id">@historyNews[i].Title</a>
                                 </div>
                             </div>
-                        </div>
-                        
+                        </div>                      
                     </div>
                 </div>
             </div>
         </div>
 }
-
-
-
 
 <partial name="_PagingPartial" model="@Model" />

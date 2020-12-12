@@ -789,7 +789,7 @@ button.btn {
         .single-news .sn-content h1.sn-title {
             display: block;
             width: 100%;
-            color: #ffffff;
+            color: navajowhite;
         }
 
     .single-news .sn-related {
@@ -832,14 +832,14 @@ button.btn {
         .single-news .sn-slider .sn-title a {
             display: block;
             width: 100%;
-            color: #ffffff;
+            color: navajowhite;
             font-size: 18px;
             font-weight: 400;
             transition: .3s;
         }
 
             .single-news .sn-slider .sn-title a:hover {
-                color: #DF0000;
+                color: navajowhite;
             }
 
     .single-news .sn-slider .slick-prev,
@@ -849,8 +849,8 @@ button.btn {
         height: 28px;
         z-index: 1;
         transition: .5s;
-        color: #ffffff;
-        background: #ffffff;
+        color: navajowhite;
+        background: navajowhite;
         border-radius: 4px;
     }
 
@@ -866,8 +866,8 @@ button.btn {
         .single-news .sn-slider .slick-prev:focus,
         .single-news .sn-slider .slick-next:hover,
         .single-news .sn-slider .slick-next:focus {
-            color: #ffffff;
-            background: #DF0000;
+            color: navajowhite;
+            background: navajowhite;
         }
 
         .single-news .sn-slider .slick-prev::before,
@@ -875,7 +875,7 @@ button.btn {
             font-family: "Font Awesome 5 Free";
             font-size: 18px;
             font-weight: 900;
-            color: #ffffff;
+            color: navajowhite;
         }
 
     .single-news .sn-slider .slick-prev::before {

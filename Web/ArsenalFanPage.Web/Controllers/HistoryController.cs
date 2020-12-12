@@ -1,7 +1,5 @@
 ﻿namespace ArsenalFanPage.Web.Controllers
 {
-    using System.Linq;
-
     using ArsenalFanPage.Services.Data;
     using ArsenalFanPage.Web.ViewModels.News;
     using Microsoft.AspNetCore.Mvc;

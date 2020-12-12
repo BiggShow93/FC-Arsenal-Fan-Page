@@ -55,7 +55,6 @@
         }
 
         [Authorize]
-        [HttpPost("News/Create")]
 
         // TODO: ADMIN [Authorize]
         public async Task<IActionResult> Create(NewsCreateInputModel input)

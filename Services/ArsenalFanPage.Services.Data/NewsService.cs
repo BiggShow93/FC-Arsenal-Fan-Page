@@ -27,7 +27,7 @@
         {
             var data = new NewsInputModel
             {
-                HistoryCount = this.newsRepository.All().Select(x => x.Category.Name == "History").Count(),
+                HistoryCount = this.newsRepository.All().Count(),
             };
 
             return data;
