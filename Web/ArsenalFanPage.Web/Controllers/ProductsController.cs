@@ -62,10 +62,10 @@
         [Authorize]
         public async Task<IActionResult> Create(ProductCreateInputModel input)
         {
-            //if (!this.ModelState.IsValid)
-            //{
-            //    return this.View(input);
-            //}
+            if (!this.ModelState.IsValid)
+            {
+                return this.View(input);
+            }
 
             var user = await this.userManager.GetUserAsync(this.User);
 

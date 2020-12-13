@@ -11,11 +11,12 @@
         public int UserId { get; set; }
 
         [Required]
-        [MinLength(10)]
+        [MinLength(5)]
         public string Title { get; set; }
 
         [Required]
         [MinLength(40)]
+        [MaxLength(5000)]
         public string Content { get; set; }
 
         [Required]

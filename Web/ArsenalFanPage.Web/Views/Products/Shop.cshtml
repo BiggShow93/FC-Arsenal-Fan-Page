@@ -2,7 +2,6 @@
 
 @{
     this.ViewData["Title"] = "Shop";
-    var product = Model.Products.Where(x => x.ProductCategoryName == "T-Shirt").ToArray();
 }
 
 <!DOCTYPE html>
@@ -27,70 +26,17 @@
     <hr />
     <div class="page-content-product">
         <div class="row clearfix">
-            <div class="col-lg-3 col-sm-3 col-md-3">
-                <div class="box-img">
-                    <div class="tn-title">
-                        <a asp-action="ProductById" asp-route-id="@Model.Products.First().Id"><h4>@Model.Products.First().Name</h4></a>
+            @foreach (var product in Model.Products)
+            {
+                <div class="col-lg-3 col-sm-3 col-md-3">
+                    <div class="box-img">
+                        <div class="tn-title">
+                            <a asp-action="ProductById" asp-route-id="@product.Id"><h4>@product.Name</h4></a>
+                        </div>
+                        <img src="@product.ImageUrl" />
                     </div>
-                    <img src="@Model.Products.First().ImageUrl"/>
                 </div>
-            </div>
-            <div class="col-lg-3 col-sm-3 col-md-3">
-                <div class="box-img">
-                    <div class="tn-title">
-                        <a class="nav-link" asp-area="" asp-controller="Products" asp-action="ProductById"><h4>Product</h4></a>
-                    </div>
-                    <img src="/images/product/2.png" alt="" />
-                </div>
-            </div>
-            <div class="col-lg-3 col-sm-6 col-md-3">
-                <a href="productpage.html">
-                    <div class="box-img">
-                        <h4>Product</h4>
-                        <img src="/images/product/4.png" alt="" />
-                    </div>
-                </a>
-            </div>
-            <div class="col-lg-3 col-sm-6 col-md-3">
-                <a href="productpage.html">
-                    <div class="box-img">
-                        <h4>Product</h4>
-                        <img src="/images/product/5.png" alt="" />
-                    </div>
-                </a>
-            </div>
-            <div class="col-lg-3 col-sm-6 col-md-3">
-                <a href="productpage.html">
-                    <div class="box-img">
-                        <h4>Product</h4>
-                        <img src="/images/product/10.png" alt="" />
-                    </div>
-                </a>
-            </div>
-            <div class="col-lg-3 col-sm-6 col-md-3">
-                <a href="productpage.html">
-                    <div class="box-img">
-                        <h4>Product</h4>
-                        <img src="/images/product/11.png" alt="" />
-                    </div>
-                </a>
-            </div>
-            <div class="col-lg-3 col-sm-6 col-md-3">
-                <a href="productpage.html">
-                    <div class="box-img">
-                        <h4>Product</h4>
-                        <img src="/images/product/12.png" alt="" />
-                    </div>
-                </a>
-            </div>
-            <div class="col-lg-3 col-sm-6 col-md-3">
-                <a href="productpage.html">
-                    <div class="box-img">
-                        <h4>Product</h4>
-                        <img src="/images/product/13.png" alt="" />
-                    </div>
-                </a>
-            </div>
+            }
         </div>
     </div>
 </body>

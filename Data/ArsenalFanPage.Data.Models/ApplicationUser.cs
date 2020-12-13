@@ -36,5 +36,7 @@ namespace ArsenalFanPage.Data.Models
         public virtual ICollection<IdentityUserLogin<string>> Logins { get; set; }
 
         public virtual ICollection<News> News { get; set; }
+
+        public virtual ICollection<Order> Orders { get; set; }
     }
 }
