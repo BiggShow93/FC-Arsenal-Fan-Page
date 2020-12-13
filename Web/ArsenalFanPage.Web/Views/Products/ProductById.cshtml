@@ -1,6 +1,7 @@
 ﻿@model ArsenalFanPage.Web.ViewModels.Product.SingleProductViewModel
 @{
     this.ViewData["Title"] = Model.Name;
+
 }
 <!DOCTYPE html>
 <html lang="en">
@@ -44,113 +45,24 @@
                             <div class="page-preview">
                                 <div class="preview">
                                     <div class="preview-pic tab-content">
-                                        <div class="tab-pane active" id="pic-1"><img src="/images/product/T-shirt-2021.png" alt="#" /></div>
-                                        <div class="tab-pane" id="pic-2"><img src="/images/lag-61.png" alt="#" /></div>
-                                        <div class="tab-pane" id="pic-3"><img src="/images/lag-60.png" alt="#" /></div>
-                                        <div class="tab-pane" id="pic-4"><img src="/images/lag-61.png" alt="#" /></div>
+                                        <div class="tab-pane active" id="pic-1"><img src="@Model.ImageUrl" /></div>
                                     </div>
-                                    <ul class="preview-thumbnail nav nav-tabs">
-                                        <li class="active"><a data-target="#pic-1" data-toggle="tab"><img src="/images/lag-60.png" alt="#" /></a></li>
-                                        <li><a data-target="#pic-2" data-toggle="tab"><img src="/images/lag-61.png" alt="#" /></a></li>
-                                        <li><a data-target="#pic-3" data-toggle="tab"><img src="/images/lag-60.png" alt="#" /></a></li>
-                                        <li><a data-target="#pic-4" data-toggle="tab"><img src="/images/lag-61.png" alt="#" /></a></li>
-                                    </ul>
                                 </div>
                             </div>
                             <div class="btn-dit-list clearfix">
                                 <hr>
-                                <div class="left-dit-p">
-                                    @*<div class="prod-btn">
-                                            <a href="#"><i class="fa fa-star" aria-hidden="true"></i> Save to wishlist</a>
-                                            <a href="#"><i class="fa fa-thumbs-up" aria-hidden="true"></i> Like this</a>
-                                            <p>23 likes</p>
-                                        </div>*@
-                                </div>
 
                             </div>
                         </div>
                         <div class="description-box">
                             <div class="dex-a">
-                                <h4>Description</h4>
-                                <p>
-                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                                    lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-                                    when an unknown printer took a galley of type and scrambled it to make a
-                                    type specimen book..
-                                </p>
-                                <br>
-                                <p>Small: H 25 cm / &Oslash; 12 cm</p>
-                                <p>Large H 24 cm / &Oslash; 25 cm</p>
+                                <h4 style="color: black"> Description</h4>
+                                <text style="color:black">
+                                    @Html.Raw(Model.Description)
+                                </text>
+
                             </div>
-                            <div class="spe-a">
-                                <h4>Specifications</h4>
-                                <ul>
-                                    <li class="clearfix">
-                                        <div class="col-md-4">
-                                            <h5>Measurments</h5>
-                                        </div>
-                                        <div class="col-md-8">
-                                            <p>H25 cm / 0 12 cm and H 24 cm / 0 25 cm</p>
-                                        </div>
-                                    </li>
-                                    <li class="clearfix">
-                                        <div class="col-md-4">
-                                            <h5>Material</h5>
-                                        </div>
-                                        <div class="col-md-8">
-                                            <p>Material Name</p>
-                                        </div>
-                                    </li>
-                                    <li class="clearfix">
-                                        <div class="col-md-4">
-                                            <h5>Wire</h5>
-                                        </div>
-                                        <div class="col-md-8">
-                                            <p>Wire Name</p>
-                                        </div>
-                                    </li>
-                                    <li class="clearfix">
-                                        <div class="col-md-4">
-                                            <h5>Comdition</h5>
-                                        </div>
-                                        <div class="col-md-8">
-                                            <p>Brand new</p>
-                                        </div>
-                                    </li>
-                                    <li class="clearfix">
-                                        <div class="col-md-4">
-                                            <h5>SKU number</h5>
-                                        </div>
-                                        <div class="col-md-8">
-                                            <p>SKU number</p>
-                                        </div>
-                                    </li>
-                                    <li class="clearfix">
-                                        <div class="col-md-4">
-                                            <h5>Shipping</h5>
-                                        </div>
-                                        <div class="col-md-8">
-                                            <p>Shipping worldwide</p>
-                                        </div>
-                                    </li>
-                                    <li class="clearfix">
-                                        <div class="col-md-4">
-                                            <h5>Warranty</h5>
-                                        </div>
-                                        <div class="col-md-8">
-                                            <p>1 years</p>
-                                        </div>
-                                    </li>
-                                    <li class="clearfix">
-                                        <div class="col-md-4">
-                                            <h5>Delivery</h5>
-                                        </div>
-                                        <div class="col-md-8">
-                                            <p>Choose country</p>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
+
                         </div>
                     </div>
                     <div class="similar-box">
@@ -168,36 +80,12 @@
                                         </div>
                                         <a href="#" tabindex="0">$1220</a>
                                     </div>
-                                    <div class="prod-btn">
-                                        <a href="#"><i class="fa fa-star" aria-hidden="true"></i> Save to wishlist</a>
-                                        <a href="#"><i class="fa fa-thumbs-up" aria-hidden="true"></i> Like this</a>
-                                        <p>23 likes</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="small-box-c">
-                                    <div class="small-img-b">
-                                        <img class="img-responsive" src="/images/tr2.png" alt="#" />
-                                    </div>
-                                    <div class="dit-t clearfix">
-                                        <div class="left-ti">
-                                            <h4>Product</h4>
-                                            <p>By <span>Beko</span> under <span>Chairs</span></p>
-                                        </div>
-                                        <a href="#" tabindex="0">$1220</a>
-                                    </div>
-                                    <div class="prod-btn">
-                                        <a href="#"><i class="fa fa-star" aria-hidden="true"></i> Save to wishlist</a>
-                                        <a href="#"><i class="fa fa-thumbs-up" aria-hidden="true"></i> Like this</a>
-                                        <p>23 likes</p>
-                                    </div>
                                 </div>
                             </div>
                         </div>
                         <div class="row cat-pd">
                             <div class="col-md-6">
-                                <div class="small-box-c">
+                                <dwiv class="small-box-c">
                                     <div class="small-img-b">
                                         <img class="img-responsive" src="/images/tr3.png" alt="#" />
                                     </div>
@@ -213,7 +101,7 @@
                                         <a href="#"><i class="fa fa-thumbs-up" aria-hidden="true"></i> Like this</a>
                                         <p>23 likes</p>
                                     </div>
-                                </div>
+                                </dwiv>
                             </div>
                             <div class="col-md-6">
                                 <div class="small-box-c">
@@ -240,39 +128,47 @@
                 <div class="col-md-3 col-sm-12">
                     <div class="price-box-right">
                         <h4>Price</h4>
-                        <h3>$1.320 <span>pr.peice</span></h3>
-                        <p>Option</p>
-                        <select class="form-control select2">
-                            <option>Flying Carpet Green rug</option>
-                            <option value="AK">Alaska</option>
-                            <option value="HI">Hawaii</option>
-                            <option value="CA">California</option>
-                            <option value="NV">Nevada</option>
-                            <option value="OR">Oregon</option>
-                            <option value="WA">Washington</option>
-                            <option value="AZ">Arizona</option>
-                            <option value="CO">Colorado</option>
-                            <option value="ID">Idaho</option>
-                            <option value="MT">Montana</option>
-                            <option value="NE">Nebraska</option>
-                            <option value="NM">New Mexico</option>
-                            <option value="ND">North Dakota</option>
-                            <option value="UT">Utah</option>
-                            <option value="WY">Wyoming</option>
-                            <option value="AL">Alabama</option>
-                            <option value="AR">Arkansas</option>
-                            <option value="IL">Illinois</option>
-                            <option value="IA">Iowa</option>
-                            <option value="KS">Kansas</option>
-                            <option value="KY">Kentucky</option>
-                        </select>
-                        <a href="#">Contact company</a>
-                        <h5><i class="fa fa-clock-o" aria-hidden="true"></i> <strong>16 hours</strong> avg. responsive time</h5>
+                        <h3>Total: $@Model.Price</h3>
+                        <a href="#">Buy Product</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <!--Modal -->
+    @*<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Open modal for @mdo</button>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@fat">Open modal for @fat</button>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">Open modal for @getbootstrap</button>*@
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Recipient:</label>
+                            <input type="text" class="form-control" id="recipient-name">
+                        </div>
+                        <div class="form-group">
+                            <label for="message-text" class="col-form-label">Message:</label>
+                            <textarea class="form-control" id="message-text"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Send message</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!--main js-->
     <script src="js/jquery-1.12.4.min.js"></script>
     <!--bootstrap js-->

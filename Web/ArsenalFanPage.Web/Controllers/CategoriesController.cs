@@ -2,7 +2,7 @@
 {
     using Microsoft.AspNetCore.Mvc;
 
-    public class CategoriesController : Controller
+    public class CategoriesController : BaseController
     {
         public IActionResult ByName(string name)
         {

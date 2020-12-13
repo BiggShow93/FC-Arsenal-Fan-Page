@@ -4,7 +4,7 @@
     using ArsenalFanPage.Web.ViewModels.News;
     using Microsoft.AspNetCore.Mvc;
 
-    public class HistoryController : Controller
+    public class HistoryController : BaseController
     {
         private readonly INewsService newsService;
 

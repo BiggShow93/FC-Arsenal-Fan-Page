@@ -34,13 +34,9 @@
 
         public DbSet<Comment> Comments { get; set; }
 
-        public DbSet<Product> Product { get; set; }
+        public DbSet<Product> Products { get; set; }
 
-        public DbSet<ProductCategory> ProductCategory { get; set; }
-
-        public DbSet<Order> Orders { get; set; }
-
-        public DbSet<OrderStatus> OrderStatuses { get; set; }
+        public DbSet<ProductCategory> ProductCategories { get; set; }
 
         public override int SaveChanges() => this.SaveChanges(true);
 
@@ -67,6 +63,11 @@
                 .HasOne<News>(i => i.News)
                 .WithOne(n => n.Image)
                 .HasForeignKey<News>(n => n.ImageId);
+
+            builder.Entity<Image>()
+                .HasOne<Product>(i => i.Product)
+                .WithOne(n => n.Image)
+                .HasForeignKey<Product>(n => n.ImageId);
 
             // Needed for Identity models configuration
             base.OnModelCreating(builder);

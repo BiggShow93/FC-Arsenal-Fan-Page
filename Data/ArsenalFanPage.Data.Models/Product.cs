@@ -10,12 +10,15 @@
         public Product()
         {
             this.Id = Guid.NewGuid().ToString();
-            this.Images = new HashSet<Image>();
         }
 
         public string Name { get; set; }
 
         public decimal Price { get; set; }
+
+        public string ImageId { get; set; }
+
+        public virtual Image Image { get; set; }
 
         public int Quantity { get; set; }
 
@@ -28,7 +31,5 @@
         public string CreatedByUserId { get; set; }
 
         public virtual ApplicationUser CreatedByUser { get; set; }
-
-        public virtual ICollection<Image> Images { get; set; }
     }
 }

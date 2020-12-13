@@ -4,14 +4,16 @@ using ArsenalFanPage.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ArsenalFanPage.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20201212150154_AddedPropertiesInDBContextAndSeeding")]
+    partial class AddedPropertiesInDBContextAndSeeding
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -238,12 +240,17 @@ namespace ArsenalFanPage.Data.Migrations
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
 
+                    b.Property<string>("ProductId1")
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<string>("RemoteImageUrl")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("IsDeleted");
+
+                    b.HasIndex("ProductId1");
 
                     b.ToTable("Images");
                 });
@@ -314,9 +321,6 @@ namespace ArsenalFanPage.Data.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("ImageId")
-                        .HasColumnType("nvarchar(450)");
-
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
@@ -338,10 +342,6 @@ namespace ArsenalFanPage.Data.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("CreatedByUserId");
-
-                    b.HasIndex("ImageId")
-                        .IsUnique()
-                        .HasFilter("[ImageId] IS NOT NULL");
 
                     b.HasIndex("IsDeleted");
 
@@ -376,7 +376,7 @@ namespace ArsenalFanPage.Data.Migrations
 
                     b.HasIndex("IsDeleted");
 
-                    b.ToTable("ProductCategories");
+                    b.ToTable("ProductCategorys");
                 });
 
             modelBuilder.Entity("ArsenalFanPage.Data.Models.Setting", b =>
@@ -532,6 +532,13 @@ namespace ArsenalFanPage.Data.Migrations
                         .HasForeignKey("UserId");
                 });
 
+            modelBuilder.Entity("ArsenalFanPage.Data.Models.Image", b =>
+                {
+                    b.HasOne("ArsenalFanPage.Data.Models.Product", "Product")
+                        .WithMany("Images")
+                        .HasForeignKey("ProductId1");
+                });
+
             modelBuilder.Entity("ArsenalFanPage.Data.Models.News", b =>
                 {
                     b.HasOne("ArsenalFanPage.Data.Models.Category", "Category")
@@ -554,10 +561,6 @@ namespace ArsenalFanPage.Data.Migrations
                     b.HasOne("ArsenalFanPage.Data.Models.ApplicationUser", "CreatedByUser")
                         .WithMany()
                         .HasForeignKey("CreatedByUserId");
-
-                    b.HasOne("ArsenalFanPage.Data.Models.Image", "Image")
-                        .WithOne("Product")
-                        .HasForeignKey("ArsenalFanPage.Data.Models.Product", "ImageId");
 
                     b.HasOne("ArsenalFanPage.Data.Models.ProductCategory", "ProductCategory")
                         .WithMany("Products")
