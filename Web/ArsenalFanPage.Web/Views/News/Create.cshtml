@@ -28,7 +28,7 @@
     <div>
         <label style="color:white" asp-for="CategoryId"></label>
         <select asp-for="CategoryId" asp-items="categories" class="form-control"></select>
-        <span style="color:white" asp-validation-for="CategoryId" class="text-danger"></span>
+        <span asp-validation-for="CategoryId" class="text-danger"></span>
     </div>
 
     <hr />
@@ -42,7 +42,7 @@
     <div>
         <label style="color:white" asp-for="Image"></label>
         <input asp-for="Image" class="form-control" />
-        <span asp-validation-for="Image"class="text-danger"></span>
+        <span asp-validation-for="Image" class="text-danger"></span>
     </div>
 
     <hr />

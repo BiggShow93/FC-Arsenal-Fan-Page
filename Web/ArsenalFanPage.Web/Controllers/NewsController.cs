@@ -30,7 +30,6 @@
             this.environment = environment;
         }
 
-        [HttpGet("/News")]
         public IActionResult News()
         {
             // TODO: Implement
@@ -39,9 +38,7 @@
             return this.View();
         }
 
-        // [Authorize]
-        [HttpGet]
-
+        [Authorize]
         public IActionResult Create()
         {
             var categories = this.categoriesService.GetAll<CategoryDropDownViewModel>();
@@ -53,6 +50,7 @@
             return this.View(viewModel);
         }
 
+        [HttpPost]
         [Authorize]
 
         // TODO: ADMIN [Authorize]

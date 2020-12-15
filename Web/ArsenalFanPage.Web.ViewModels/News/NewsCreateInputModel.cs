@@ -11,7 +11,7 @@
         public int UserId { get; set; }
 
         [Required]
-        [MinLength(5)]
+        [MinLength(5, ErrorMessage = "The min lenth is 5 chrachters.")]
         public string Title { get; set; }
 
         [Required]

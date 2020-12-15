@@ -48,6 +48,7 @@
         }
 
         [HttpGet]
+        [Authorize]
         public IActionResult Create()
         {
             var categories = this.productCategoriesService.GetAll<ProductDropDownViewModel>();
@@ -59,6 +60,7 @@
             return this.View(viewModel);
         }
 
+        [HttpPost]
         [Authorize]
         public async Task<IActionResult> Create(ProductCreateInputModel input)
         {
