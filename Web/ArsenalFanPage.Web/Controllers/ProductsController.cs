@@ -32,7 +32,7 @@
 
         public IActionResult Shop(int id = 1)
         {
-            const int ItemsPerPage = 3;
+            const int ItemsPerPage = 8;
 
             var products = this.productService.GetProducts<ProductInListViewModel>(id, ItemsPerPage);
 
@@ -62,10 +62,10 @@
         [Authorize]
         public async Task<IActionResult> Create(ProductCreateInputModel input)
         {
-            //if (!this.ModelState.IsValid)
-            //{
-            //    return this.View(input);
-            //}
+            if (!this.ModelState.IsValid)
+            {
+                return this.View(input);
+            }
 
             var user = await this.userManager.GetUserAsync(this.User);
 

@@ -2,21 +2,20 @@
 
 @{
     this.ViewData["Title"] = "History";
-    var historyNews = Model.News.Where(x => x.CategoryName == "HISTORY").ToArray();
-
 }
 
-@for (int i = 0; i < historyNews.Length; i++)
+@foreach (var historyNews in Model.News.Where(x => x.CategoryId == 6))
 {
+
     <div class="top-news">
         <div class="container">
             <div class="row">
                 <div class="col-md-12 tn-left">
                         <div class="col-md-12">
                             <div class="tn-img">
-                                <img src="@historyNews[i].ImageUrl" />
+                                <img src="@historyNews.ImageUrl" />
                                 <div class="tn-title">
-                                    <a asp-action="NewsById" asp-route-id="@historyNews[i].Id">@historyNews[i].Title</a>
+                                    <a asp-action="NewsById" asp-route-id="@historyNews.Id">@historyNews.Title</a>
                                 </div>
                             </div>
                         </div>                      

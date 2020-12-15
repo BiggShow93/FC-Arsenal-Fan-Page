@@ -70,9 +70,10 @@
             await this.newsRepository.SaveChangesAsync();
         }
 
-        public IEnumerable<T> GetNews<T>(int page, int itemsPerPage = 4)
+        public IEnumerable<T> GetNews<T>(int page, string category, int itemsPerPage = 4)
         {
             var news = this.newsRepository.AllAsNoTracking()
+                .Where(x => x.Category.Name == category)
                 .OrderByDescending(x => x.Id)
                 .Skip((page - 1) * itemsPerPage)
                 .Take(itemsPerPage)

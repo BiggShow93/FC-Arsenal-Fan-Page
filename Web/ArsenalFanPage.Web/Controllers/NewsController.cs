@@ -68,7 +68,7 @@
             try
             {
                 await this.newsService.CreateAsync(
-               input, input.Title, input.CategoryId, input.Content, user.Id, $"{this.environment.WebRootPath}/products");
+               input, input.Title, input.CategoryId, input.Content, user.Id, $"{this.environment.WebRootPath}/images");
             }
             catch (Exception ex)
             {

@@ -16,18 +16,18 @@
         [HttpGet]
         public IActionResult News(int id = 1)
         {
-            const int ItemsPerPage = 3;
-
-            var historyNews = this.newsService.GetNews<NewsInListViewModel>(id, ItemsPerPage);
+            const int ItemsPerPage = 4;
             var category = "HISTORY";
 
+            var historyNews = this.newsService.GetNews<NewsInListViewModel>(id, category, ItemsPerPage);
+
             var viewModel = new NewsListViewModel
-                {
-                    ItemsPerPage = ItemsPerPage,
-                    PageNumer = id,
-                    Count = this.newsService.GetCount(category),
-                    News = historyNews,
-                };
+            {
+                ItemsPerPage = ItemsPerPage,
+                PageNumer = id,
+                Count = this.newsService.GetCount(category),
+                News = historyNews,
+            };
 
             return this.View(viewModel);
         }

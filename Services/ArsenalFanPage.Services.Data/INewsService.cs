@@ -12,11 +12,11 @@
 
         NewsInputModel GetNewsCountByCategory();
 
-        IEnumerable<T> GetNews<T>(int page, int itemsPage = 8);
+        IEnumerable<T> GetNews<T>(int page, string category, int itemsPage);
 
         IEnumerable<T> GetNews<T>();
 
-        int GetCount(string category = null);
+        public int GetCount(string categoryName = null);
 
         T GetById<T>(int id);
     }
