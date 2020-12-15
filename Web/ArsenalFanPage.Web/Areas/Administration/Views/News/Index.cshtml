@@ -1,0 +1,83 @@
+﻿@model IEnumerable<ArsenalFanPage.Data.Models.News>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Admin Panel</h2>
+
+<p>
+    <a asp-action="Create" style="background-color:darkblue" class="btn btn-primary">Create New</a>
+</p>
+<table  class="table table-bordered table-hover table-dark table-striped">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedByUser)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Category)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsDeleted)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DeletedOn)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedOn)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ModifiedOn)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedByUser.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Category.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsDeleted)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DeletedOn)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedOn)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ModifiedOn)
+            </td>
+            <td>
+
+                <li style="background-color:darkblue" class="btn btn-primary">
+                    <a style="color:white" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                </li>
+                <hr />
+                <li style="background-color:darkblue" class="btn btn-primary">
+                    <a style="color:white" asp-action="Details" asp-route-id="@item.Id">Details</a>
+                </li>
+                <hr />
+                <li style="background-color:red" class="btn btn-primary">
+                    <a style="color:black" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </li>
+                <hr />
+
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

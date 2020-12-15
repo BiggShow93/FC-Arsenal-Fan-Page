@@ -1,0 +1,74 @@
+﻿@model ArsenalFanPage.Data.Models.News
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>News Details</h2>
+
+<div>
+    <hr />
+    <dl style="color:white" class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Content)
+        </dt>
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatedByUser)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CreatedByUser.Id)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Category)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Category.Id)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Image)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Image.Id)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.IsDeleted)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.IsDeleted)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DeletedOn)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DeletedOn)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatedOn)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CreatedOn)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ModifiedOn)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ModifiedOn)
+        </dd>
+        <hr />
+    </dl>
+</div>
+<div>
+    <li style="background-color:darkblue" class="btn btn-primary">
+        <a style="color:white" asp-action="Edit" asp-route-id="@Model.Id">Edit</a> 
+    </li>
+    <li style="background-color:darkblue" class="btn btn-primary">
+        <a style="color:white" asp-action="Index">Back to List</a>
+    </li>
+</div>
