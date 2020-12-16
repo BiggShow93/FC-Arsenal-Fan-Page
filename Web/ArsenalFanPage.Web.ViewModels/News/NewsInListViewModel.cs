@@ -1,5 +1,7 @@
 ﻿namespace ArsenalFanPage.Web.ViewModels.News
 {
+    using System.Collections.Generic;
+
     using ArsenalFanPage.Data.Models;
     using ArsenalFanPage.Services.Mapping;
     using AutoMapper;

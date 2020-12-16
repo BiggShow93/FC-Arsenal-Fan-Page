@@ -1,6 +1,6 @@
 ﻿namespace ArsenalFanPage.Web.ViewModels.Comments
 {
-    public class Comment
+    public class CommentCreateInputModel
     {
         public int NewsId { get; set; }
 

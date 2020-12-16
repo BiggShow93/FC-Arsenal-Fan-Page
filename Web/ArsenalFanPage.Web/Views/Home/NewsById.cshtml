@@ -20,14 +20,17 @@
                             <hr />
                             <hr />
                             <p>
-                                @Html.Raw(Model.Content)
+                                @Html.Raw(Model.SanitizedContent)
                             </p>
                         </div>
 
                     </div>
                 </div>
+                <hr />
 
                 @*TODO :Commets*@
+
+                <div class="px-4 pt-3"> <button type="button" class="btn btn-primary float-right" onclick="showAddCommentForm(0)"><i class="fa fa-plus"></i>&nbsp; Comment</button> </div>
 
             </div>
             <hr />

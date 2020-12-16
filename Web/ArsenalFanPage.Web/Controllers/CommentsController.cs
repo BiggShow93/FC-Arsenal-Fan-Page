@@ -41,7 +41,7 @@
 
             var userId = this.userManager.GetUserId(this.User);
             await this.commentsService.Create(input.NewsId, userId, input.Content, parentId);
-            return this.RedirectToAction("ById", "Posts", new { id = input.NewsId });
+            return this.RedirectToAction("NewsById", "History", new { id = input.NewsId });
         }
     }
 }
