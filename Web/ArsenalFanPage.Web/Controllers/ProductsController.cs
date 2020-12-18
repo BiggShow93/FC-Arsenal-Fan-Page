@@ -74,7 +74,7 @@
             try
             {
                 await this.productService.CreateAsync(
-                input, user.Id, input.Name, input.Description, input.Price, input.Quantity, input.ProductCategoryId, $"{this.environment.WebRootPath}/images");
+                input, user.Id, $"{this.environment.WebRootPath}/images");
             }
             catch (Exception ex)
             {

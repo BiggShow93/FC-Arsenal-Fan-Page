@@ -22,16 +22,16 @@
         }
 
         public async Task CreateAsync(
-            ProductCreateInputModel input, string userId, string name, string description, decimal price, int quantity, int productCategoryId, string imagePath)
+            ProductCreateInputModel input, string userId, string imagePath)
         {
             var product = new Product
             {
                CreatedByUserId = userId,
-               Name = name,
-               Description = description,
-               Price = price,
-               Quantity = quantity,
-               ProductCategoryId = productCategoryId,
+               Name = input.Name,
+               Description = input.Description,
+               Price = input.Price,
+               Quantity = input.Quantity,
+               ProductCategoryId = input.ProductCategoryId,
             };
 
             Directory.CreateDirectory($"{imagePath}/products/");
@@ -40,7 +40,7 @@
 
             if (!this.allowedExtensions.Any(x => extension.EndsWith(x)))
             {
-                throw new Exception($"Invalid image extension {extension}");
+                throw new ArgumentException($"Invalid image extension {extension}");
             }
 
             Directory.CreateDirectory($"{imagePath}/products/");

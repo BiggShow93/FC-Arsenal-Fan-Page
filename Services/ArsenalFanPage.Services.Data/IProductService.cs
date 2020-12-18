@@ -7,8 +7,7 @@
 
     public interface IProductService
     {
-        Task CreateAsync(
-            ProductCreateInputModel input, string userId, string name, string description, decimal price, int quantity, int categoryId, string imagePath);
+        Task CreateAsync( ProductCreateInputModel input, string userId, string imagePath);
 
         IEnumerable<T> GetProducts<T>(int page, int itemsPerPage = 8);
 

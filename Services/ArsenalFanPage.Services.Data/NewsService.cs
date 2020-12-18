@@ -23,23 +23,14 @@
             this.newsRepository = newsRepository;
         }
 
-        public NewsInputModel GetNewsCountByCategory()
-        {
-            var data = new NewsInputModel
-            {
-                HistoryCount = this.newsRepository.All().Count(),
-            };
 
-            return data;
-        }
-
-        public async Task CreateAsync(NewsCreateInputModel input, string title, int categoryId, string content, string userId, string imagePath)
+        public async Task CreateAsync(NewsCreateInputModel input, string userId, string imagePath)
         {
             var news = new News()
             {
-                CategoryId = categoryId,
-                Content = content,
-                Title = title,
+                CategoryId = input.CategoryId,
+                Content = input.Content,
+                Title = input.Title,
                 CreatedByUserId = userId,
             };
 
@@ -47,7 +38,7 @@
 
             if (!this.allowedExtensions.Any(x => extension.EndsWith(x)))
             {
-                throw new Exception($"Invalid image extension {extension}");
+                throw new ArgumentException($"Invalid image extension {extension}");
             }
 
             Directory.CreateDirectory($"{imagePath}/news/");
@@ -85,7 +76,7 @@
 
         public IEnumerable<T> GetNews<T>()
         {
-            var news = this.newsRepository.AllAsNoTracking()
+            var news = this.newsRepository.All()
                 .OrderByDescending(x => x.Id)
                 .To<T>()
                 .ToList();

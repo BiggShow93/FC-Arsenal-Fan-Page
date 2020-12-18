@@ -32,8 +32,6 @@
 
         public IActionResult News()
         {
-            // TODO: Implement
-            var viewModel = this.newsService.GetNewsCountByCategory();
 
             return this.View();
         }
@@ -66,9 +64,9 @@
             try
             {
                 await this.newsService.CreateAsync(
-               input, input.Title, input.CategoryId, input.Content, user.Id, $"{this.environment.WebRootPath}/images");
+               input, user.Id, $"{this.environment.WebRootPath}/images");
             }
-            catch (Exception ex)
+            catch (ArgumentException ex)
             {
                 this.ModelState.AddModelError(string.Empty, ex.Message);
             }

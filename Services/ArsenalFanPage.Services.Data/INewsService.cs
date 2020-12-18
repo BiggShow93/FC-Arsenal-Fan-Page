@@ -8,9 +8,7 @@
 
     public interface INewsService
     {
-        Task CreateAsync(NewsCreateInputModel input, string title, int categoryId, string content, string userId, string imagePath);
-
-        NewsInputModel GetNewsCountByCategory();
+        Task CreateAsync(NewsCreateInputModel input, string userId, string imagePath);
 
         IEnumerable<T> GetNews<T>(int page, string category, int itemsPage);
 
