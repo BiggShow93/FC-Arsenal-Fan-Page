@@ -91,13 +91,16 @@
 
 
         [Fact]
-        public void TestGetNewsById()
+        public void TestGetNewsById_ShouldBeCorrect()
         {
             var options = new DbContextOptionsBuilder<ApplicationDbContext>()
                 .UseInMemoryDatabase(Guid.NewGuid().ToString());
+
             var repository = new EfDeletableEntityRepository<News>(new ApplicationDbContext(options.Options));
+
             repository.AddAsync(new News {Id = 25, Title = "test" }).GetAwaiter().GetResult();
             repository.SaveChangesAsync().GetAwaiter().GetResult();
+
             var postService = new NewsService(repository);
             AutoMapperConfig.RegisterMappings(typeof(MyTestNews).Assembly);
             var news = postService.GetById<MyTestNews>(25);

@@ -135,10 +135,12 @@
         {
             var options = new DbContextOptionsBuilder<ApplicationDbContext>()
                 .UseInMemoryDatabase(Guid.NewGuid().ToString());
+
             var repository = new EfDeletableEntityRepository<Product>(new ApplicationDbContext(options.Options));
             repository.AddAsync(new Product { Id = "1", Name = "test" }).GetAwaiter().GetResult();
 
             repository.SaveChangesAsync().GetAwaiter().GetResult();
+
             var productService = new ProductService(repository);
             AutoMapperConfig.RegisterMappings(typeof(MyTestProduct).Assembly);
             var product = productService.GetById<MyTestProduct>("1");

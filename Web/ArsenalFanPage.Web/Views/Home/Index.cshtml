@@ -48,36 +48,39 @@
                     </div>
                 </div>
                 <div class="col-md-12">
-                    <h2>Technology</h2>
+                    <h2>Top-News</h2>
                     <div class="row cn-slider">
+
+                        @for (int i = 0; i < 3; i++)
+                        {
                         <div class="col-md-6">
-                            <div class="cn-img">
-                                <img src="img/news-350x223-4.jpg" />
-                                <div class="cn-title">
-                                    <a href="">Lorem ipsum dolor sit</a>
+                            @if (i % 2 == 0)
+                            {
+                                <div class="cn-img">
+                                    <img src="@historyNews[i].ImageUrl" />
+                                    <div class="cn-title">
+                                        <a asp-action="NewsById" asp-route-id="@historyNews[i].Id">@historyNews[i].Title</a>
+                                    </div>
                                 </div>
-                            </div>
+                            }
+
+                            @if (i % 2 != 0)
+                            {
+                                <div class="cn-img">
+                                    <img src="@topNews[i].ImageUrl" />
+                                    <div class="cn-title">
+                                        <a asp-action="NewsById" asp-route-id="@topNews[i].Id">@topNews[i].Title</a>
+                                    </div>
+                                </div>
+
+                            }
+
                         </div>
-                        <div class="col-md-6">
-                            <div class="cn-img">
-                                <img src="img/news-350x223-5.jpg" />
-                                <div class="cn-title">
-                                    <a href="">Lorem ipsum dolor sit</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="cn-img">
-                                <img src="img/news-350x223-1.jpg" />
-                                <div class="cn-title">
-                                    <a href="">Lorem ipsum dolor sit</a>
-                                </div>
-                            </div>
+                        }
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 </body>
 
