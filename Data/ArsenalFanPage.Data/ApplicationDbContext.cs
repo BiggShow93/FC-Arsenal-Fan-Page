@@ -38,6 +38,10 @@
 
         public DbSet<ProductCategory> ProductCategories { get; set; }
 
+        public DbSet<Order> Orders { get; set; }
+
+        public DbSet<OrderStatus> OrderStatuses { get; set; }
+
         public override int SaveChanges() => this.SaveChanges(true);
 
         public override int SaveChanges(bool acceptAllChangesOnSuccess)
@@ -68,6 +72,13 @@
                 .HasOne<Product>(i => i.Product)
                 .WithOne(n => n.Image)
                 .HasForeignKey<Product>(n => n.ImageId);
+
+
+            builder.Entity<OrderStatus>()
+                .HasMany(x => x.Orders)
+                .WithOne(x => x.Status)
+                .HasForeignKey(x => x.OrderStatusId);
+
 
             // Needed for Identity models configuration
             base.OnModelCreating(builder);

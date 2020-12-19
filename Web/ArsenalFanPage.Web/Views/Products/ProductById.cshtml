@@ -3,8 +3,7 @@
     this.ViewData["Title"] = Model.Name;
 
 }
-<!DOCTYPE html>
-<html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Chamb - Responsive E-commerce HTML5 Template</title>
@@ -70,13 +69,49 @@
                         <h3>Price</h3>
                         <h2 style="color:black">Total: $@Model.Price</h2>
                         <hr />
-                        <h4 >In Stock: @Model.Quantity</h4>
-                        <a href="#">Buy Product</a>
+                        <h4>In Stock: @Model.Quantity</h4>
+                        <button class="btn btn-primary text-white font-weight-bold" data-toggle="modal" data-target="#orderModal">Order</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+    <div class="modal fade" id="orderModal" tabindex="-1" role="dialog" aria-labelledby="orderModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="orderModalLabel">Order - @Model.Name</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form method="post" asp-action="Order">
+                        <div class="form-group">
+                            <label for="quantity" class="col-form-label font-weight-bold">Quantity</label>
+                            <input type="number"
+                                   class="form-control"
+                                   id="quantity"
+                                   name="quantity">
+                            <input type="hidden" value="@Model.Id" name="productId" />
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary" id="complete-order-button">Complete</button>
+                        </div>
+                    </form>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $('#complete-order-button').click(function () {
+            $('#order-form').submit();
+        });
+    </script>
 
     <!--main js-->
     <script src="js/jquery-1.12.4.min.js"></script>
@@ -89,4 +124,3 @@
     <!--custom js-->
     <script src="js/custom.js"></script>
 </body>
-</html>

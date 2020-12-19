@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ArsenalFanPage.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20201212150154_AddedPropertiesInDBContextAndSeeding")]
-    partial class AddedPropertiesInDBContextAndSeeding
+    [Migration("20201219063131_ChangeRelationShip")]
+    partial class ChangeRelationShip
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -240,17 +240,12 @@ namespace ArsenalFanPage.Data.Migrations
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
 
-                    b.Property<string>("ProductId1")
-                        .HasColumnType("nvarchar(450)");
-
                     b.Property<string>("RemoteImageUrl")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("IsDeleted");
-
-                    b.HasIndex("ProductId1");
 
                     b.ToTable("Images");
                 });
@@ -304,6 +299,77 @@ namespace ArsenalFanPage.Data.Migrations
                     b.ToTable("News");
                 });
 
+            modelBuilder.Entity("ArsenalFanPage.Data.Models.Order", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("ModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("OrderStatusId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ProductId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("IsDeleted");
+
+                    b.HasIndex("OrderStatusId");
+
+                    b.HasIndex("ProductId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Orders");
+                });
+
+            modelBuilder.Entity("ArsenalFanPage.Data.Models.OrderStatus", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("ModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("IsDeleted");
+
+                    b.ToTable("OrderStatuses");
+                });
+
             modelBuilder.Entity("ArsenalFanPage.Data.Models.Product", b =>
                 {
                     b.Property<string>("Id")
@@ -320,6 +386,9 @@ namespace ArsenalFanPage.Data.Migrations
 
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImageId")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
@@ -342,6 +411,10 @@ namespace ArsenalFanPage.Data.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("CreatedByUserId");
+
+                    b.HasIndex("ImageId")
+                        .IsUnique()
+                        .HasFilter("[ImageId] IS NOT NULL");
 
                     b.HasIndex("IsDeleted");
 
@@ -376,7 +449,7 @@ namespace ArsenalFanPage.Data.Migrations
 
                     b.HasIndex("IsDeleted");
 
-                    b.ToTable("ProductCategorys");
+                    b.ToTable("ProductCategories");
                 });
 
             modelBuilder.Entity("ArsenalFanPage.Data.Models.Setting", b =>
@@ -532,13 +605,6 @@ namespace ArsenalFanPage.Data.Migrations
                         .HasForeignKey("UserId");
                 });
 
-            modelBuilder.Entity("ArsenalFanPage.Data.Models.Image", b =>
-                {
-                    b.HasOne("ArsenalFanPage.Data.Models.Product", "Product")
-                        .WithMany("Images")
-                        .HasForeignKey("ProductId1");
-                });
-
             modelBuilder.Entity("ArsenalFanPage.Data.Models.News", b =>
                 {
                     b.HasOne("ArsenalFanPage.Data.Models.Category", "Category")
@@ -556,11 +622,32 @@ namespace ArsenalFanPage.Data.Migrations
                         .HasForeignKey("ArsenalFanPage.Data.Models.News", "ImageId");
                 });
 
+            modelBuilder.Entity("ArsenalFanPage.Data.Models.Order", b =>
+                {
+                    b.HasOne("ArsenalFanPage.Data.Models.OrderStatus", "Status")
+                        .WithMany("Orders")
+                        .HasForeignKey("OrderStatusId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("ArsenalFanPage.Data.Models.Product", "Product")
+                        .WithMany()
+                        .HasForeignKey("ProductId");
+
+                    b.HasOne("ArsenalFanPage.Data.Models.ApplicationUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId");
+                });
+
             modelBuilder.Entity("ArsenalFanPage.Data.Models.Product", b =>
                 {
                     b.HasOne("ArsenalFanPage.Data.Models.ApplicationUser", "CreatedByUser")
                         .WithMany()
                         .HasForeignKey("CreatedByUserId");
+
+                    b.HasOne("ArsenalFanPage.Data.Models.Image", "Image")
+                        .WithOne("Product")
+                        .HasForeignKey("ArsenalFanPage.Data.Models.Product", "ImageId");
 
                     b.HasOne("ArsenalFanPage.Data.Models.ProductCategory", "ProductCategory")
                         .WithMany("Products")

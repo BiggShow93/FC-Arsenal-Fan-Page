@@ -5,7 +5,9 @@
 
     using ArsenalFanPage.Data.Models;
     using ArsenalFanPage.Services.Data;
+    using ArsenalFanPage.Web.ViewModels.Orders;
     using ArsenalFanPage.Web.ViewModels.Product;
+    using ArsenalFanPage.Web.ViewModels.Products;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Identity;
@@ -17,17 +19,35 @@
         private readonly UserManager<ApplicationUser> userManager;
         private readonly IProductService productService;
         private readonly IWebHostEnvironment environment;
+        private readonly IOrderService orderService;
 
         public ProductsController(
             IProductCategorieService productCategoriesService,
             UserManager<ApplicationUser> userManager,
             IProductService productService,
-            IWebHostEnvironment environment)
+            IWebHostEnvironment environment,
+            IOrderService orderService)
         {
             this.productCategoriesService = productCategoriesService;
             this.userManager = userManager;
             this.productService = productService;
             this.environment = environment;
+            this.orderService = orderService;
+        }
+
+        [HttpPost(Name = "Order")]
+        public async Task<IActionResult> Order(ProductOrderInputModel input)
+        {
+            var orderCreateViewModel = new OrderCreateViewModel
+            {
+                ProductId = input.ProductId,
+                Quantity = input.Quantity,
+                UserId = this.userManager.GetUserId(this.User),
+            };
+
+            await this.orderService.CreateOrder(orderCreateViewModel);
+
+            return this.Redirect("/");
         }
 
         public IActionResult Shop(int id = 1)
@@ -64,10 +84,10 @@
         [Authorize]
         public async Task<IActionResult> Create(ProductCreateInputModel input)
         {
-            if (!this.ModelState.IsValid)
-            {
-                return this.View(input);
-            }
+            //if (!this.ModelState.IsValid)
+            //{
+            //    return this.View(input);
+            //}
 
             var user = await this.userManager.GetUserAsync(this.User);
 
@@ -90,6 +110,5 @@
 
             return this.View(news);
         }
-
     }
 }
