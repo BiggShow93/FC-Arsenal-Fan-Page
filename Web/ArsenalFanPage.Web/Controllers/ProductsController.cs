@@ -2,7 +2,7 @@
 {
     using System;
     using System.Threading.Tasks;
-
+    using ArsenalFanPage.Common;
     using ArsenalFanPage.Data.Models;
     using ArsenalFanPage.Services.Data;
     using ArsenalFanPage.Web.ViewModels.Orders;
@@ -68,7 +68,7 @@
         }
 
         [HttpGet]
-        [Authorize]
+        [Authorize(Roles = GlobalConstants.AdministratorRoleName)]
         public IActionResult Create()
         {
             var categories = this.productCategoriesService.GetAll<ProductDropDownViewModel>();
@@ -81,14 +81,10 @@
         }
 
         [HttpPost]
-        [Authorize]
+        [Authorize(Roles = GlobalConstants.AdministratorRoleName)]
         public async Task<IActionResult> Create(ProductCreateInputModel input)
         {
-            //if (!this.ModelState.IsValid)
-            //{
-            //    return this.View(input);
-            //}
-
+ 
             var user = await this.userManager.GetUserAsync(this.User);
 
             try

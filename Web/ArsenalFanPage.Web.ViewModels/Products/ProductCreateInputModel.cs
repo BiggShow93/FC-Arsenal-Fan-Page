@@ -1,5 +1,6 @@
 ﻿namespace ArsenalFanPage.Web.ViewModels.Product
 {
+    using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
@@ -21,7 +22,7 @@
         public string Description { get; set; }
 
         [Required]
-        [Range(4.00, 1000.00, ErrorMessage = "The price cannot be less then 4 or more than 1000 charachters.")]
+        [Range(0, double.PositiveInfinity, ErrorMessage = "The price cannot be less then 4 or more than 1000 charachters.")]
         public decimal Price { get; set; }
 
         [Required]

@@ -2,7 +2,7 @@
 {
     using System;
     using System.Threading.Tasks;
-
+    using ArsenalFanPage.Common;
     using ArsenalFanPage.Data.Models;
     using ArsenalFanPage.Services.Data;
     using ArsenalFanPage.Web.ViewModels.News;
@@ -36,7 +36,7 @@
             return this.View();
         }
 
-        [Authorize]
+        [Authorize(Roles = GlobalConstants.AdministratorRoleName)]
         public IActionResult Create()
         {
             var categories = this.categoriesService.GetAll<CategoryDropDownViewModel>();
@@ -49,15 +49,10 @@
         }
 
         [HttpPost]
-        [Authorize]
+        [Authorize(Roles = GlobalConstants.AdministratorRoleName)]
 
-        // TODO: ADMIN [Authorize]
         public async Task<IActionResult> Create(NewsCreateInputModel input)
         {
-            //if (!this.ModelState.IsValid)
-            //{
-            //    return this.View(input);
-            //}
 
             var user = await this.userManager.GetUserAsync(this.User);
 
