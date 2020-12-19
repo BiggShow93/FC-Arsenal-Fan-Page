@@ -21,7 +21,7 @@
         public string Description { get; set; }
 
         [Required]
-        [Range(4, 1000, ErrorMessage = "The price cannot be less then 4 or more than 1000 charachters.")]
+        [Range(4.00, 1000.00, ErrorMessage = "The price cannot be less then 4 or more than 1000 charachters.")]
         public decimal Price { get; set; }
 
         [Required]

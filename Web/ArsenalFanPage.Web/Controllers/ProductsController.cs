@@ -47,7 +47,7 @@
 
             await this.orderService.CreateOrder(orderCreateViewModel);
 
-            return this.Redirect("/");
+            return this.Redirect("/Orders/Cart");
         }
 
         public IActionResult Shop(int id = 1)
@@ -84,10 +84,10 @@
         [Authorize]
         public async Task<IActionResult> Create(ProductCreateInputModel input)
         {
-            if (!this.ModelState.IsValid)
-            {
-                return this.View(input);
-            }
+            //if (!this.ModelState.IsValid)
+            //{
+            //    return this.View(input);
+            //}
 
             var user = await this.userManager.GetUserAsync(this.User);
 
