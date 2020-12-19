@@ -49,6 +49,10 @@
                     <li class="nav-item active">
                         <a class="nav-link" asp-area="" asp-controller="Products" asp-action="Shop">Shop</a>
                     </li>
+
+                    <li class="nav-item active">
+                        <a class="nav-link" asp-area="" asp-controller="Orders" asp-action="Cart">Shopping Cart</a>
+                    </li>
                 </ul>
                 @if (!this.User.Identity.IsAuthenticated)
                 {

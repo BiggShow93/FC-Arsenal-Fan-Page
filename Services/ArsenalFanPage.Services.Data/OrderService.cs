@@ -1,11 +1,13 @@
 ﻿namespace ArsenalFanPage.Services.Data
 {
     using System;
+    using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
     using ArsenalFanPage.Data;
     using ArsenalFanPage.Data.Models;
     using ArsenalFanPage.Web.ViewModels.Orders;
+    using ArsenalFanPage.Services.Mapping;
 
     public class OrderService : IOrderService
     {
@@ -35,14 +37,19 @@
                 .SingleOrDefault(orderStatus => orderStatus.Name == "Active");
 
             this.dbContext.Orders.Add(order);
-            int result = this.dbContext.SaveChanges();
+            int result = await this.dbContext.SaveChangesAsync();
 
             return result > 0;
         }
 
-        public IQueryable<OrderCreateViewModel> GetAll()
+        public IEnumerable<OrderCreateViewModel> GetAll()
         {
-            throw new NotImplementedException();
+            var orders = this.dbContext.Orders
+                 .OrderByDescending(x => x.CreatedOn)
+                 .To<OrderCreateViewModel>()
+                 .ToList();
+
+            return orders;
         }
 
         public Task<bool> IncreaseQuantity(string orderId)
